@@ -1,8 +1,0 @@
-CREATE TABLE consultas (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  paciente TEXT NOT NULL,
-  data TEXT NOT NULL,
-  horario TEXT NOT NULL,
-  observacoes TEXT,
-  email TEXT
-);
