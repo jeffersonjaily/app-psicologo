@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+  <main class="login-container">
+    <h1>Criar Conta</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>{% for msg in messages %}<li>{{ msg }}</li>{% endfor %}</ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+      <input name="username" placeholder="Usuário" required>
+      <input name="password" type="password" placeholder="Senha" required>
+      <button class="submit-btn" type="submit">Cadastrar</button>
+    </form>
+    <p class="toggle">Já tem conta? <a href="{{ url_for('login') }}">Login</a></p>
+  </main>
+</body>
+</html>

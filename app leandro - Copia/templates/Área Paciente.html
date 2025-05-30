@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Pacientes</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+
+  <main class="login-container">
+
+    <!-- Login -->
+    <div id="login-container">
+      <h2>Login</h2>
+      <input type="text" id="loginUser" placeholder="Usuário" />
+      <input type="password" id="loginPass" placeholder="Senha" />
+      <button class="submit-btn" onclick="login()">Entrar</button>
+      <p class="toggle">Não tem conta? <a href="#" onclick="toggleForm()">Cadastre-se</a></p>
+    </div>
+
+    <!-- Cadastro -->
+    <div id="register-container" class="hidden">
+      <h2>Cadastro</h2>
+      <input type="text" id="registerUser" placeholder="Novo usuário" />
+      <input type="password" id="registerPass" placeholder="Senha" />
+      <button class="submit-btn" onclick="register()">Cadastrar</button>
+      <p class="toggle">Já tem conta? <a href="#" onclick="toggleForm()">Login</a></p>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-container" class="hidden">
+      <h2>Área do Paciente</h2>
+      <input type="text" id="patientName" placeholder="Nome" />
+      <input type="text" id="patientAge" placeholder="Idade" />
+      <input type="text" id="patientCondition" placeholder="Condição Médica" />
+      <button class="submit-btn" onclick="saveData()">Salvar Dados</button>
+      <button class="submit-btn" onclick="logout()">Sair</button>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleForm() {
+      document.getElementById("login-container").classList.toggle("hidden");
+      document.getElementById("register-container").classList.toggle("hidden");
+    }
+
+    function register() {
+      const user = document.getElementById("registerUser").value.trim();
+      const pass = document.getElementById("registerPass").value;
+      if (!user || !pass) return alert("Preencha todos os campos.");
+      if (localStorage.getItem(user)) return alert("Usuário já existe.");
+
+      localStorage.setItem(user, pass);
+      alert("Cadastro realizado com sucesso!");
+      toggleForm();
+    }
+
+    function login() {
+      const user = document.getElementById("loginUser").value.trim();
+      const pass = document.getElementById("loginPass").value;
+      if (localStorage.getItem(user) === pass) {
+        alert("Login bem-sucedido!");
+        document.getElementById("login-container").classList.add("hidden");
+        document.getElementById("dashboard-container").classList.remove("hidden");
+      } else {
+        alert("Usuário ou senha incorretos.");
+      }
+    }
+
+    function saveData() {
+      const data = {
+        nome: document.getElementById("patientName").value,
+        idade: document.getElementById("patientAge").value,
+        condicao: document.getElementById("patientCondition").value
+      };
+      localStorage.setItem("paciente", JSON.stringify(data));
+      alert("Dados salvos com sucesso!");
+    }
+
+    function logout() {
+      document.getElementById("dashboard-container").classList.add("hidden");
+      document.getElementById("login-container").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>

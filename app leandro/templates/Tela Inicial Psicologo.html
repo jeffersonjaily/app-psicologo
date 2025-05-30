@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Tela Inicial - Psicólogo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("../static/imagens/fundo-app.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            cursor: pointer;
+        }
+
+        .logout-button {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: #f4f4f4;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+        }
+
+        nav {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            display: none;
+            width: 200px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        nav li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+       <h1>Bem-vindo, <span id="nomeUsuarioSpan">Psicólogo</span></h1>
+        <button class="logout-button" onclick="logout()">Sair</button>
+    </header>
+
+    <nav id="dropdownMenu">
+        <ul>
+            <li onclick="location.href='configuracoes.html'">Configurações</li>
+            <li onclick="location.href='perfil.html'">Perfil</li>
+            <li onclick="location.href='ajuda.html'">Ajuda</li>
+        </ul>
+    </nav>
+
+    <main>
+        <a href="agenda.html" class="card agenda" style="background-image: url('../static/imagens/background image for3.png'); background-size: cover; background-position: center;">
+            <h2>Agenda de Consultas</h2>
+            <p style="font-weight: bold;">fonte: próximos atendimentos e agende novas sessões.</p>
+        </a>
+
+        <a href="pacientes.html" class="card" style="background-image: url('../static/imagens/background image for4.png'); background-size: cover; background-position: center;">
+            <h2><span style="font-weight: bold;">Área do Paciente</span></h2>
+            <p style="font-weight: bold;">Acesse perfis, histórico de sessões e anotações.</p>
+        </a>
+
+        <a href="ferramentas.html" class="card" style="display: block; background-image: url('../static/imagens/background image for 2.png'); background-size: cover; background-position: center;">
+            <h2>Ferramentas Terapêuticas</h2> 
+            <p>Exercícios de mindfulness, testes e técnicas de relaxamento.</p>
+        </a>
+
+        <a href="chat.html" class="card" style="display: block; background-image: url('../static/imagens/background image for6.png'); background-size: cover; background-position: center;">
+            <h2>Chat Seguro</h2>
+            <p>Comunique-se de forma segura e confidencial com seus pacientes.</p>
+        </a>
+
+        <a href="relatorios.html" class="card" style="display: block; background-image: url('../static/imagens/background image for7.png'); background-size: cover; background-position: center;">
+            <h2>Relatórios e Estatísticas</h2>
+            <p>Veja gráficos e insights sobre os atendimentos realizados.</p>
+        </a>
+
+        <a href="notificacoes.html" class="card" style="display: block; background-image: url('../static/imagens/background image for.png'); background-size: cover; background-position: center;">
+            <h2>Notificações e Lembretes</h2>
+            <p>Receba alertas de sessões e tarefas importantes.</p>
+        </a>
+
+        <a href="configuracoes.html" class="card" style="display: block; background-image: url('../static/imagens/background image for5.png'); background-size: cover; background-position: center;" >
+            <h2>Configurações</h2>
+            <p>Personalize temas, notificações e segurança do aplicativo.</span></p>
+        </a>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function logout() {
+            // Aqui você pode adicionar lógica para sair, como limpar tokens, redirecionar, etc
+            alert("Usuário deslogado com sucesso.");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>

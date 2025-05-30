@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Área do Paciente</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Cabeçalho com navegação -->
+<header>
+  <h1>Área do Paciente</h1>
+  <nav>
+    <button class="btn-Home" onclick="window.location.href='Tela Inicial Psicologo.html'">Home</button>
+    <button class="btn-Sobre" onclick="window.location.href='sobre.html'">Sobre</button>
+    <button class="btn-Contato" onclick="window.location.href='contato.html'">Contato</button>
+    <button class="btn-login" onclick="window.location.href='logout.html'">Sair</button>
+  </nav>
+</header>
+
+
+  <main class="container login-container" role="main" aria-label="Conteúdo principal da área do paciente">
+    <h1 class="titulo">Bem-vindo, {{ paciente.nome }}</h1>
+
+    <section class="dados-paciente card">
+      <h2>Informações da Consulta</h2>
+      <p><strong>Tipo de Consulta:</strong> {{ paciente.tipo_consulta }}</p>
+      <p><strong>Valor por Sessão:</strong> R$ {{ paciente.valor_sessao }}</p>
+      <p><strong>Valor em Aberto:</strong> R$ {{ paciente.valor_pendente }}</p>
+    </section>
+
+    <section class="frequencia card">
+      <h2>Controle de Sessões</h2>
+      <ul>
+        <li><strong>Sessões Agendadas:</strong> {{ paciente.total_sessoes }}</li>
+        <li><strong>Comparecimentos:</strong> {{ paciente.comparecimentos }}</li>
+        <li><strong>Faltas:</strong> {{ paciente.faltas }}</li>
+      </ul>
+    </section>
+
+    <section class="acoes">
+      <form action="{{ url_for('registrar_sessao', paciente_id=paciente.id) }}" method="post">
+        <button type="submit" class="btn submit-btn">Registrar Nova Sessão</button>
+      </form>
+      <form action="{{ url_for('registrar_falta', paciente_id=paciente.id) }}" method="post">
+        <button type="submit" class="btn submit-btn btn-alerta">Registrar Falta</button>
+      </form>
+      <form action="{{ url_for('registrar_pagamento', paciente_id=paciente.id) }}" method="post">
+        <button type="submit" class="btn submit-btn btn-sucesso">Registrar Pagamento</button>
+      </form>
+    </section>
+
+    <a href="{{ url_for('relatorios', paciente_id=paciente.id) }}" class="btn relatorio-link">
+      📄 Ver Relatório do Mês
+    </a>
+  </main>
+
+</body>
+</html>
