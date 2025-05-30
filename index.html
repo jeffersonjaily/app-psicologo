@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Boas-Vindas</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Cabeçalho com navegação -->
+  <header><h1></h1>
+    <nav>
+      <button class="btn-Home" onclick="window.location.href='index.html'">Home</button>
+      <button class="btn-Sobre" onclick="window.location.href='Área Paciente.html'">Área Paciente</button>
+      <button class="btn-Contato" onclick="window.location.href='contato.html'">Contato</button>
+      <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
+      <button class="btn-signup" onclick="window.location.href='cadastro.html'">Cadastrar</button>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="hero">
+      <!-- Lado Esquerdo -->
+      <div class="hero-left">
+        <p style="font-style: italic;">
+          "Entender para transformar. Seu bem-estar começa aqui. Psicologia para uma vida mais leve, promovendo equilíbrio e autoconhecimento em 
+          cada passo. Cuidando da mente, transformando vidas."
+        </p>
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/q-WgxOf_Qt8?si=2ABRjnRSuQVhsq1V"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Carrossel de imagens -->
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <img src="../static/imagens/Tranquilidade e bem-1.png" alt="Imagem 1" />
+          <img src="../static/imagens/Tranquilidade e bem-2.png" alt="Imagem 2" />
+          <img src="../static/imagens/Tranquilidade e bem-3.png" alt="Imagem 3" />
+        </div>
+        <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+        <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
+      </div>
+    </section>
+
+    <!-- Flyer horizontal com imagens alinhadas -->
+    <section class="flyer">
+      <img src="../static/imagens/vertical.png" alt="Flyer 1" />
+      <img src="../static/imagens/horizontal.png" alt="Flyer 2" />
+      <img src="../static/imagens/horizontal1.png" alt="Flyer 3" />
+      <img src="../static/imagens/horizontal2.png" alt="Flyer 4" />
+      <img src="../static/imagens/horizontal3.png" alt="Flyer 5" />
+    </section>
+  </main>
+
+  <!-- Carrossel Script -->
+  <script>
+    let currentIndex = 0;
+
+    function moveSlide(direction) {
+      const track = document.querySelector('.carousel-track');
+      const totalSlides = track.children.length;
+      currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(() => {
+      moveSlide(1);
+    }, 5000);
+  </script>
+</body>
+</html>
