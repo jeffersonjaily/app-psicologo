@@ -20,13 +20,16 @@
 }
 
 body {
+  overflow-x: auto;
+  overflow-y: auto;
   font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--color-bg-light);
   color: var(--color-text);
   padding: 0;
-  padding-top: 50px;
+  padding-top: 60px;
   line-height: 1.6;
   font-size: 16px;
+  padding-top: 70px
 }
 
 /* HEADER */
@@ -42,15 +45,29 @@ header {
   top: 0;
   width: 100%;
   z-index: 100;
+  height: 60px; 
 }
 
 nav {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-left: 470px;
+  flex-wrap: nowrap; /* NÃO permitir quebra de linha */
+  justify-content: flex-start; /* alinhar à esquerda */
+  overflow-x: auto; /* permite scroll horizontal se necessário */
+  max-width: 100%; /* evitar que ultrapasse a tela */
+  padding-left: 20px; /* espaço interno para não colar na borda */
+  scrollbar-width: thin; /* scrollbar mais fina (Firefox) */
+}
+
+/* Opcional para esconder scrollbar no Webkit (Chrome, Edge, Safari) */
+nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
 }
 
 nav button,
@@ -86,29 +103,52 @@ main {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
+  padding: 0 15px; /* Espaço nas laterais no mobile */
 }
 
 .hero-left {
-  flex: 1;
+  flex: 1 1 100%; /* Por padrão ocupa 100% */
   min-width: 280px;
+  max-width: 600px; /* Limite max para desktop */
 }
 
-.hero-left h1 {
-  font-size: 2.6rem;
-  margin-bottom: 10px;
-  word-break: break-word;
+.hero-left p {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
-.play-button {
-  margin-top: 20px;
-  background-color: var(--color-secondary);
-  border: none;
-  padding: 14px 20px;
-  border-radius: 50%;
-  color: var(--color-white);
-  font-size: 1.2rem;
-  cursor: pointer;
+/* Video container responsivo */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--color-bg-highlight);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 100%;
+  margin-top: 15px;
 }
+
+.video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+/* Ajustes para telas maiores */
+@media (max-width: 768px) {
+  nav {
+    margin-left: 0;         /* remove margem grande no mobile */
+    justify-content: center; /* centraliza os botões */
+  }
+}
+
 
 /* VIDEO */
 .video-container {
