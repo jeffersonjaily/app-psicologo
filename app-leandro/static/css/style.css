@@ -23,8 +23,10 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--color-bg-light);
   color: var(--color-text);
-  padding: 0px;
+  padding: 0;
   padding-top: 50px;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 /* HEADER */
@@ -47,8 +49,8 @@ nav {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
-  margin-left: 470px;
   justify-content: center;
+  margin-left: 470px;
 }
 
 nav button,
@@ -92,8 +94,9 @@ main {
 }
 
 .hero-left h1 {
-  font-size: 3rem;
+  font-size: 2.6rem;
   margin-bottom: 10px;
+  word-break: break-word;
 }
 
 .play-button {
@@ -127,7 +130,7 @@ main {
   left: 0;
 }
 
-/* CARROSSEL CORRIGIDO */
+/* CARROSSEL */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -400,6 +403,12 @@ button.submit-btn:hover {
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
+  nav {
+    margin-left: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .hero {
     flex-direction: column;
   }
@@ -407,6 +416,11 @@ button.submit-btn:hover {
   .carousel-container {
     max-width: 100%;
     margin-top: 30px;
+  }
+
+  .page-title {
+    font-size: 1.3rem;
+    text-align: center;
   }
 }
 
@@ -425,17 +439,29 @@ button.submit-btn:hover {
   .chat-container {
     margin: 30px 10px;
   }
+
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+
+  .flyer {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .flyer img {
+    max-width: 100px;
+  }
 }
 
-/* Espaço reservado para o rodapé fixo */
-
+/* FOOTER */
 footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-primary); /* Igual ao cabeçalho */
-  color: var(--color-white); /* Texto branco */
+  background-color: var(--color-primary);
+  color: var(--color-white);
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
   z-index: 1000;
 }
@@ -444,20 +470,19 @@ footer nav ul {
   margin-right: 450px;
   padding: 12px 0;
   display: flex;
-  justify-content: center; /* Centraliza os itens */
-  gap: 20px; /* Espaço entre os botões */
+  justify-content: center;
+  gap: 20px;
   list-style: none;
 }
 
-
 footer nav ul li a {
   text-decoration: none;
-  color: var(--color-white); /* Texto branco */
+  color: var(--color-white);
   font-weight: bold;
   padding: 6px 12px;
   transition: color 0.3s ease;
 }
 
 footer nav ul li a:hover {
-  color: var(--color-secondary); /* Destaque laranja ao passar o mouse */
+  color: var(--color-secondary);
 }
