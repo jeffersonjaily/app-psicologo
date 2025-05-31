@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat - Paciente</title>
+  <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body>
+  <h2 style="text-align:center;">Chat com Psicólogo</h2>
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Digite sua mensagem..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message user';
+      messageDiv.textContent = "Paciente: " + msg;
+      document.getElementById('chatMessages').appendChild(messageDiv);
+      input.value = "";
+      scrollDown();
+    }
+
+    function scrollDown() {
+      const container = document.getElementById('chatMessages');
+      container.scrollTop = container.scrollHeight;
+    }
+  </script>
+</body>
+</html>

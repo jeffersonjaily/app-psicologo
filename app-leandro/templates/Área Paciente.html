@@ -1,40 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Pacientes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Área do Paciente</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
-        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
-        input, button { width: 100%; padding: 10px; margin: 5px 0; }
-        .hidden { display: none; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        button {
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .hidden {
+            display: none;
+        }
+        /* Dashboard estilo cards */
+        .dashboard-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card-button {
+            background-size: cover;
+            background-position: center;
+            width: 160px;
+            height: 120px;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+        .card-description {
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            opacity: 0.85;
+        }
+        /* Botão sair separado */
+        .logout-btn {
+            margin-top: 30px;
+            background-color: #e74c3c;
+            font-weight: 700;
+            width: 120px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
+    <div class="header">Área do Paciente</div>
+
+    <!-- LOGIN -->
     <div id="login-container" class="container">
         <h2>Login</h2>
-        <input type="text" id="loginUser" placeholder="Usuário">
-        <input type="password" id="loginPass" placeholder="Senha">
+        <input type="text" id="loginUser" placeholder="Usuário" autocomplete="username" />
+        <input type="password" id="loginPass" placeholder="Senha" autocomplete="current-password" />
         <button onclick="login()">Entrar</button>
         <p>Não tem conta? <a href="#" onclick="toggleForm()">Cadastre-se</a></p>
     </div>
 
+    <!-- CADASTRO -->
     <div id="register-container" class="container hidden">
         <h2>Cadastro</h2>
-        <input type="text" id="registerUser" placeholder="Novo usuário">
-        <input type="password" id="registerPass" placeholder="Senha">
+        <input type="text" id="registerUser" placeholder="Novo usuário" autocomplete="username" />
+        <input type="password" id="registerPass" placeholder="Senha" autocomplete="new-password" />
         <button onclick="register()">Cadastrar</button>
         <p>Já tem conta? <a href="#" onclick="toggleForm()">Login</a></p>
     </div>
 
+    <!-- DASHBOARD -->
     <div id="dashboard-container" class="container hidden">
-        <h2>Área do Paciente</h2>
-        <input type="text" id="patientName" placeholder="Nome">
-        <input type="text" id="patientAge" placeholder="Idade">
-        <input type="text" id="patientCondition" placeholder="Condição Médica">
+        <h2>Seus Dados</h2>
+        <input type="text" id="patientName" placeholder="Nome" />
+        <input type="text" id="patientAge" placeholder="Idade" />
+        <input type="text" id="patientCondition" placeholder="Condição Médica" />
         <button onclick="saveData()">Salvar Dados</button>
-        <button onclick="logout()">Sair</button>
+
+        <div class="dashboard-buttons">
+            <a href="chat_paciente.html" class="card-button" 
+                style="background-image: url('../static/imagens/background%20image%20for6.png');">
+                Chat com Psicólogo
+                <span class="card-description">Converse com seu psicólogo com segurança</span>
+            </a>
+            
+            <!-- Você pode adicionar mais cards aqui, exemplo: -->
+            <a href="#" class="card-button" 
+                style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80');">
+                Histórico Médico
+                <span class="card-description">Acesse seu histórico de consultas e tratamentos</span>
+            </a>
+            <a href="#" class="card-button" 
+                style="background-image: url('https://images.unsplash.com/photo-1531497865143-fce2f9b1fefb?auto=format&fit=crop&w=400&q=80');">
+                Agenda de Consultas
+                <span class="card-description">Veja e marque suas próximas consultas</span>
+            </a>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">Sair</button>
     </div>
 
     <script>
@@ -44,38 +159,67 @@
         }
 
         function register() {
-            const user = document.getElementById("registerUser").value;
-            const pass = document.getElementById("registerPass").value;
+            const user = document.getElementById("registerUser").value.trim();
+            const pass = document.getElementById("registerPass").value.trim();
+            if (!user || !pass) {
+                alert("Por favor, preencha usuário e senha para cadastro.");
+                return;
+            }
+            if(localStorage.getItem(user)) {
+                alert("Usuário já existe. Escolha outro.");
+                return;
+            }
             localStorage.setItem(user, pass);
-            alert("Cadastro realizado!");
+            alert("Cadastro realizado com sucesso!");
             toggleForm();
         }
 
         function login() {
-            const user = document.getElementById("loginUser").value;
-            const pass = document.getElementById("loginPass").value;
+            const user = document.getElementById("loginUser").value.trim();
+            const pass = document.getElementById("loginPass").value.trim();
             if (localStorage.getItem(user) === pass) {
                 alert("Login bem-sucedido!");
                 document.getElementById("login-container").classList.add("hidden");
+                document.getElementById("register-container").classList.add("hidden");
                 document.getElementById("dashboard-container").classList.remove("hidden");
+
+                // Opcional: carregar dados salvos do paciente
+                const pacienteData = JSON.parse(localStorage.getItem("paciente"));
+                if(pacienteData) {
+                    document.getElementById("patientName").value = pacienteData.nome || "";
+                    document.getElementById("patientAge").value = pacienteData.idade || "";
+                    document.getElementById("patientCondition").value = pacienteData.condição || "";
+                }
             } else {
                 alert("Usuário ou senha inválidos!");
             }
         }
 
         function saveData() {
-            const data = {
-                nome: document.getElementById("patientName").value,
-                idade: document.getElementById("patientAge").value,
-                condição: document.getElementById("patientCondition").value,
-            };
+            const nome = document.getElementById("patientName").value.trim();
+            const idade = document.getElementById("patientAge").value.trim();
+            const condição = document.getElementById("patientCondition").value.trim();
+
+            if (!nome || !idade || !condição) {
+                alert("Preencha todos os dados antes de salvar.");
+                return;
+            }
+
+            const data = { nome, idade, condição };
             localStorage.setItem("paciente", JSON.stringify(data));
-            alert("Dados salvos!");
+            alert("Dados salvos com sucesso!");
         }
 
         function logout() {
             document.getElementById("dashboard-container").classList.add("hidden");
             document.getElementById("login-container").classList.remove("hidden");
+
+            // Limpar campos do dashboard por segurança
+            document.getElementById("patientName").value = "";
+            document.getElementById("patientAge").value = "";
+            document.getElementById("patientCondition").value = "";
+            document.getElementById("loginUser").value = "";
+            document.getElementById("loginPass").value = "";
         }
     </script>
 </body>
