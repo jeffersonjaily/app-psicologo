@@ -13,6 +13,7 @@
   --color-white: #ffffff;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -20,67 +21,52 @@
 }
 
 body {
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: auto;
   font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--color-bg-light);
   color: var(--color-text);
-  padding: 0;
-  padding-top: 60px;
+  padding-top: 70px;
   line-height: 1.6;
   font-size: 16px;
-  padding-top: 70px
 }
 
 /* HEADER */
 header {
   background-color: var(--color-primary);
-  padding: 15px 10px;
   color: var(--color-white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 1px 1px 0 0;
+  padding: 15px 10px;
+  height: 60px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  height: 60px; 
+  border-radius: 1px 1px 0 0;
 }
 
 nav {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex-wrap: nowrap; /* NÃO permitir quebra de linha */
-  justify-content: flex-start; /* alinhar à esquerda */
-  overflow-x: auto; /* permite scroll horizontal se necessário */
-  max-width: 100%; /* evitar que ultrapasse a tela */
-  padding-left: 20px; /* espaço interno para não colar na borda */
-  scrollbar-width: thin; /* scrollbar mais fina (Firefox) */
-}
-
-/* Opcional para esconder scrollbar no Webkit (Chrome, Edge, Safari) */
-nav::-webkit-scrollbar {
-  height: 6px;
-}
-
-nav::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
-  border-radius: 3px;
+  margin-left: 70px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: left;
 }
 
 nav button,
 .btn-Home, .btn-Sobre, .btn-Contato, .btn-signup, .btn-login {
-  color: var(--color-white);
   background-color: var(--color-secondary);
+  color: var(--color-white);
   border: none;
   padding: 10px 16px;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 14px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 nav button:hover,
@@ -103,33 +89,32 @@ main {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
-  padding: 0 15px; /* Espaço nas laterais no mobile */
+  padding: 0 15px;
 }
 
 .hero-left {
-  flex: 1 1 100%; /* Por padrão ocupa 100% */
+  flex: 1 1 100%;
   min-width: 280px;
-  max-width: 600px; /* Limite max para desktop */
+  max-width: 600px;
 }
 
 .hero-left p {
   font-style: italic;
   font-size: 1.1rem;
-  line-height: 1.5;
   margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* Video container responsivo */
+/* VIDEO */
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   border-radius: 12px;
   background-color: var(--color-bg-highlight);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 100%;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .video-container iframe {
@@ -139,35 +124,6 @@ main {
   top: 0;
   left: 0;
   border: 0;
-}
-
-/* Ajustes para telas maiores */
-@media (max-width: 768px) {
-  nav {
-    margin-left: 0;         /* remove margem grande no mobile */
-    justify-content: center; /* centraliza os botões */
-  }
-}
-
-
-/* VIDEO */
-.video-container {
-  margin-top: 20px;
-  position: relative;
-  padding-bottom: 41.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: var(--color-bg-highlight);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.video-container iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }
 
 /* CARROSSEL */
@@ -184,8 +140,8 @@ main {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.6s ease-in-out;
   height: 100%;
+  transition: transform 0.6s ease-in-out;
 }
 
 .carousel-track img {
@@ -206,6 +162,7 @@ main {
   cursor: pointer;
   z-index: 10;
 }
+
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
@@ -226,23 +183,23 @@ main {
 .flyer img {
   max-width: 122px;
   max-height: 150px;
-  border-radius: 2px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 2px;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .flyer img:hover {
   transform: scale(1.05);
 }
 
-/* TITULO */
+/* TÍTULO */
 .page-title {
   background-color: var(--color-secondary);
   color: var(--color-white);
   padding: 10px 20px;
-  font-weight: 700;
   font-size: 1.6rem;
+  font-weight: 700;
   border-radius: 6px;
   white-space: nowrap;
   user-select: none;
@@ -255,14 +212,14 @@ main.login-container {
   margin: 100px auto 0;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 main.login-container h1 {
   text-align: center;
   margin-bottom: 1.5rem;
-  font-weight: 700;
   font-size: 1.8rem;
+  font-weight: 700;
 }
 
 input {
@@ -270,9 +227,9 @@ input {
   padding: 0.75rem;
   margin-bottom: 1rem;
   font-size: 16px;
-  border-radius: 8px;
   border: 1px solid #ccc;
-  transition: border-color 0.3s ease;
+  border-radius: 8px;
+  transition: border-color 0.3s;
 }
 
 input:focus {
@@ -284,15 +241,27 @@ button.submit-btn {
   width: 100%;
   padding: 0.75rem;
   font-size: 16px;
-  background-color: var(--color-accent);
-  color: var(--color-white);
   border: none;
   border-radius: 8px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
   cursor: pointer;
 }
 
 button.submit-btn:hover {
   background-color: #2867b2;
+}
+
+#register-form input {
+  background-color: var(--color-white);
+}
+
+#register-form button.submit-btn {
+  background-color: var(--color-success);
+}
+
+#register-form button.submit-btn:hover {
+  background-color: var(--color-success-dark);
 }
 
 .toggle {
@@ -308,18 +277,6 @@ button.submit-btn:hover {
 
 .toggle a:hover {
   text-decoration: underline;
-}
-
-#register-form input {
-  background-color: var(--color-white);
-}
-
-#register-form button.submit-btn {
-  background-color: var(--color-success);
-}
-
-#register-form button.submit-btn:hover {
-  background-color: var(--color-success-dark);
 }
 
 .hidden {
@@ -357,8 +314,8 @@ button.submit-btn:hover {
 
 .chat-input button {
   background-color: var(--color-secondary);
-  border: none;
   color: var(--color-white);
+  border: none;
   padding: 0 20px;
   border-radius: 6px;
   cursor: pointer;
@@ -401,12 +358,12 @@ button.submit-btn:hover {
 
 .btn.submit-btn {
   background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
-  border: none;
-  color: var(--color-white);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .btn-alerta {
@@ -441,12 +398,49 @@ button.submit-btn:hover {
   background-color: #15314a;
 }
 
+/* FOOTER */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+footer nav ul {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+footer nav ul li a {
+  color: var(--color-white);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px 12px;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+footer nav ul li a:hover {
+  color: var(--color-secondary);
+}
+
 /* RESPONSIVO */
 @media (max-width: 768px) {
   nav {
     margin-left: 0;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .hero {
@@ -492,53 +486,14 @@ button.submit-btn:hover {
   .flyer img {
     max-width: 100px;
   }
-}
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
-  padding: 10px 0; /* Espaço vertical para toque */
-}
-
-footer nav ul {
-  margin: 0 auto; /* Centraliza horizontalmente */
-  padding: 0;
-  max-width: 900px; /* Limite de largura para desktop */
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  flex-wrap: wrap; /* Permite quebrar linha no mobile */
-}
-
-footer nav ul li a {
-  text-decoration: none;
-  color: var(--color-white);
-  font-weight: bold;
-  padding: 6px 12px;
-  transition: color 0.3s ease;
-  white-space: nowrap;
-}
-
-footer nav ul li a:hover {
-  color: var(--color-secondary);
-}
-
-/* Responsividade para mobile */
-@media (max-width: 600px) {
   footer nav ul {
     gap: 10px;
     padding: 0 10px;
   }
 
   footer nav ul li a {
-    padding: 8px 10px;
     font-size: 14px;
+    padding: 8px 10px;
   }
 }
