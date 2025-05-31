@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página de Boas-Vindas</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <!-- Cabeçalho com navegação -->
-  <header><h1></h1>
+  <header>
     <nav>
       <button class="btn-Home" onclick="window.location.href='index.html'">Home</button>
-      <button class="btn-Sobre" onclick="window.location.href='Área Paciente.html'">Área Paciente</button>
+      <button class="btn-Sobre" onclick="window.location.href='area-paciente.html'">Área Paciente</button>
       <button class="btn-Contato" onclick="window.location.href='contato.html'">Contato</button>
       <button class="btn-login" onclick="window.location.href='login.html'">Login</button>
       <button class="btn-signup" onclick="window.location.href='cadastro.html'">Cadastrar</button>
@@ -22,7 +22,7 @@
   <!-- Conteúdo principal -->
   <main>
     <section class="hero">
-      <!-- Lado Esquerdo -->
+      <!-- Texto e vídeo -->
       <div class="hero-left">
         <p style="font-style: italic;">
           "Entender para transformar. Seu bem-estar começa aqui. Psicologia para uma vida mais leve, promovendo equilíbrio e autoconhecimento em 
@@ -51,7 +51,7 @@
       </div>
     </section>
 
-    <!-- Flyer horizontal com imagens alinhadas -->
+    <!-- Flyer horizontal -->
     <section class="flyer">
       <img src="../static/imagens/vertical.png" alt="Flyer 1" />
       <img src="../static/imagens/horizontal.png" alt="Flyer 2" />
@@ -61,7 +61,7 @@
     </section>
   </main>
 
-  <!-- Carrossel Script -->
+  <!-- Script do carrossel -->
   <script>
     let currentIndex = 0;
 
@@ -76,5 +76,18 @@
       moveSlide(1);
     }, 5000);
   </script>
+
+  <!-- Rodapé fixo -->
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="#hoje">Hoje</a></li>
+        <li><a href="#conteudo">Conteúdo</a></li>
+        <li><a href="#papo-privado">Papo Privado</a></li>
+        <li><a href="#mensagens">Mensagens</a></li>
+        <li><a href="#flo-a-dois">Flo a Dois</a></li>
+      </ul>
+    </nav>
+  </footer>
 </body>
 </html>

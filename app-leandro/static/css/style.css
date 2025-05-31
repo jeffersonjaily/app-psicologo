@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+  --color-primary: #1e3a5f;
+  --color-secondary: #f97316;
+  --color-secondary-dark: #d65a0a;
+  --color-accent: #357ABD;
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+  --color-bg-light: #fff7ed;
+  --color-bg-highlight: #e0f2fe;
+  --color-text: #1f2937;
+  --color-white: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,20 +21,21 @@
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  background-color: #fff4e6;
-  color: #1f2937;
-  padding: 20px;
-  padding-top: 90px;
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  padding: 0px;
+  padding-top: 50px;
 }
 
+/* HEADER */
 header {
-  background-color: #1e3a5f;
-  padding: 15px 30px;
-  color: white;
+  background-color: var(--color-primary);
+  padding: 15px 10px;
+  color: var(--color-white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 10px 10px 0 0;
+  border-radius: 1px 1px 0 0;
   position: fixed;
   top: 0;
   width: 100%;
@@ -33,40 +47,42 @@ nav {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  margin-left: 470px;
+  justify-content: center;
 }
 
 nav button,
 .btn-Home, .btn-Sobre, .btn-Contato, .btn-signup, .btn-login {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: #f97316;
+  color: var(--color-white);
+  background-color: var(--color-secondary);
   border: none;
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 nav button:hover,
 .btn-Home:hover, .btn-Sobre:hover, .btn-Contato:hover,
 .btn-signup:hover, .btn-login:hover {
-  background-color: #d65a0a;
+  background-color: var(--color-secondary-dark);
 }
 
+/* MAIN */
 main {
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 30px;
   border-radius: 0 0 10px 10px;
   margin-top: 20px;
 }
 
+/* HERO */
 .hero {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 20px;
 }
 
@@ -82,16 +98,16 @@ main {
 
 .play-button {
   margin-top: 20px;
-  background-color: #f97316;
+  background-color: var(--color-secondary);
   border: none;
   padding: 14px 20px;
   border-radius: 50%;
-  color: white;
+  color: var(--color-white);
   font-size: 1.2rem;
   cursor: pointer;
 }
 
-/* Vídeo responsivo */
+/* VIDEO */
 .video-container {
   margin-top: 20px;
   position: relative;
@@ -99,27 +115,26 @@ main {
   height: 0;
   overflow: hidden;
   border-radius: 12px;
+  background-color: var(--color-bg-highlight);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background-color: #e0f2fe;
 }
 
 .video-container iframe {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 
-/* CARROSSEL */
+/* CARROSSEL CORRIGIDO */
 .carousel-container {
-  flex: 1;
-  min-width: 80px;
-  max-width: 280px;
-  height: auto;
   position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 240px;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin-top: 152px;
 }
@@ -127,15 +142,13 @@ main {
 .carousel-track {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 100%;
+  height: 100%;
 }
 
 .carousel-track img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
   flex: 0 0 100%;
-  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .carousel-btn {
@@ -143,25 +156,23 @@ main {
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0,0,0,0.4);
-  color: white;
+  color: var(--color-white);
   border: none;
   padding: 10px;
-  cursor: pointer;
   font-size: 1.5rem;
-  z-index: 2;
-  user-select: none;
+  cursor: pointer;
+  z-index: 10;
 }
-
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
 /* FLYER */
 .flyer {
   margin: 40px 20px 0;
-  background-color: #e0f2fe;
+  background-color: var(--color-bg-highlight);
   padding: 20px;
   text-align: center;
-  border-radius: 120px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -174,47 +185,34 @@ main {
   max-height: 150px;
   border-radius: 2px;
   object-fit: cover;
-  cursor: pointer;
-  user-select: none;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .flyer img:hover {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-  }
-
-  nav {
-    justify-content: flex-end;
-  }
-
-  .carousel-container {
-    max-width: 100%;
-    margin-top: 30px;
-  }
-}
+/* TITULO */
 .page-title {
-  background-color: #f97316;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
   padding: 10px 20px;
-  border-radius: 6px;
   font-weight: 700;
   font-size: 1.6rem;
-  color: white;
-  user-select: none;
+  border-radius: 6px;
   white-space: nowrap;
+  user-select: none;
 }
 
+/* LOGIN & CADASTRO */
 main.login-container {
-  background-color: #fff;
+  background-color: var(--color-white);
+  max-width: 400px;
+  margin: 100px auto 0;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 100px auto 0;
 }
 
 main.login-container h1 {
@@ -228,33 +226,30 @@ input {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
   font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
   transition: border-color 0.3s ease;
 }
 
 input:focus {
-  border-color: #357ABD;
+  border-color: var(--color-accent);
   outline: none;
 }
 
 button.submit-btn {
   width: 100%;
   padding: 0.75rem;
-  background-color: #4A90E2;
-  border: none;
-  color: white;
   font-size: 16px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-button.submit-btn:hover,
-button.submit-btn:focus {
-  background-color: #357ABD;
-  outline: none;
+button.submit-btn:hover {
+  background-color: #2867b2;
 }
 
 .toggle {
@@ -264,63 +259,71 @@ button.submit-btn:focus {
 }
 
 .toggle a {
-  color: #4A90E2;
+  color: var(--color-accent);
   text-decoration: none;
-  cursor: pointer;
-  transition: text-decoration 0.3s ease;
 }
 
-.toggle a:hover,
-.toggle a:focus {
+.toggle a:hover {
   text-decoration: underline;
-  outline: none;
 }
-/* Formulário de Cadastro */
 
 #register-form input {
-  background-color: #fdfdfd;
-  border: 1px solid #ccc;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-#register-form input:focus {
-  border-color: #4A90E2;
-  background-color: #ffffff;
-}
-
-#register-form input::placeholder {
-  color: #a0a0a0;
+  background-color: var(--color-white);
 }
 
 #register-form button.submit-btn {
-  background-color: #22c55e; /* verde suave */
+  background-color: var(--color-success);
 }
 
-#register-form button.submit-btn:hover,
-#register-form button.submit-btn:focus {
-  background-color: #16a34a;
+#register-form button.submit-btn:hover {
+  background-color: var(--color-success-dark);
 }
 
-@media (max-width: 500px) {
-  .login-container {
-    margin: 100px 10px 0;
-    padding: 1.5rem;
-  }
-
-  input,
-  button.submit-btn {
-    font-size: 15px;
-    padding: 0.6rem;
-  }
-}
 .hidden {
   display: none;
 }
 
-/* ===== Área do Paciente ===== */
+/* CHAT */
+.chat-container {
+  background-color: var(--color-white);
+  border-left: 4px solid var(--color-secondary);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 40px auto;
+}
 
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+}
+
+.chat-input button {
+  background-color: var(--color-secondary);
+  border: none;
+  color: var(--color-white);
+  padding: 0 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ÁREA DO PACIENTE */
 .card {
-  background-color: #fff7ed;
+  background-color: var(--color-bg-light);
   border: 1px solid #f3d9b1;
   padding: 20px;
   border-radius: 10px;
@@ -332,13 +335,12 @@ button.submit-btn:focus {
 .frequencia h2 {
   font-size: 1.4rem;
   margin-bottom: 12px;
-  color: #1e3a5f;
+  color: var(--color-primary);
 }
 
 .dados-paciente p,
 .frequencia ul li {
   font-size: 1rem;
-  margin-bottom: 8px;
   color: #374151;
 }
 
@@ -354,91 +356,108 @@ button.submit-btn:focus {
   margin-bottom: 20px;
 }
 
-/* Botões de ação */
 .btn.submit-btn {
-  width: 100%;
+  background-color: var(--color-accent);
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
   border: none;
-  color: white;
-  background-color: #4A90E2;
+  color: var(--color-white);
   transition: background-color 0.3s ease;
-}
-
-.btn.submit-btn:hover {
-  background-color: #357ABD;
 }
 
 .btn-alerta {
-  background-color: #f97316;
+  background-color: var(--color-secondary);
 }
 
 .btn-alerta:hover {
-  background-color: #d65a0a;
+  background-color: var(--color-secondary-dark);
 }
 
 .btn-sucesso {
-  background-color: #22c55e;
+  background-color: var(--color-success);
 }
 
 .btn-sucesso:hover {
-  background-color: #16a34a;
+  background-color: var(--color-success-dark);
 }
 
-/* Link para relatório */
 .relatorio-link {
-  display: inline-block;
-  text-align: center;
-  background-color: #1e3a5f;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
   padding: 12px 20px;
   border-radius: 8px;
+  display: inline-block;
   font-weight: bold;
   font-size: 1rem;
   margin-top: 20px;
-  transition: background-color 0.3s ease;
 }
 
 .relatorio-link:hover {
   background-color: #15314a;
 }
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Chat - Psicólogo</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h2 style="text-align:center;">Chat com Paciente</h2>
-  <div class="chat-container">
-    <div class="chat-messages" id="chatMessages"></div>
-    <div class="chat-input">
-      <input type="text" id="messageInput" placeholder="Digite sua resposta..." />
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
-  </div>
 
-  <script>
-    function sendMessage() {
-      const input = document.getElementById('messageInput');
-      const msg = input.value.trim();
-      if (!msg) return;
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
 
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'message user';
-      messageDiv.textContent = "Psicólogo: " + msg;
-      document.getElementById('chatMessages').appendChild(messageDiv);
-      input.value = "";
-      scrollDown();
-    }
+  .carousel-container {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}
 
-    function scrollDown() {
-      const container = document.getElementById('chatMessages');
-      container.scrollTop = container.scrollHeight;
-    }
-  </script>
-</body>
-</html>
+@media (max-width: 500px) {
+  .login-container {
+    margin: 100px 10px 0;
+    padding: 1.5rem;
+  }
+
+  input,
+  button.submit-btn {
+    font-size: 15px;
+    padding: 0.6rem;
+  }
+
+  .chat-container {
+    margin: 30px 10px;
+  }
+}
+
+/* Espaço reservado para o rodapé fixo */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-primary); /* Igual ao cabeçalho */
+  color: var(--color-white); /* Texto branco */
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+footer nav ul {
+  margin-right: 450px;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center; /* Centraliza os itens */
+  gap: 20px; /* Espaço entre os botões */
+  list-style: none;
+}
+
+
+footer nav ul li a {
+  text-decoration: none;
+  color: var(--color-white); /* Texto branco */
+  font-weight: bold;
+  padding: 6px 12px;
+  transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+  color: var(--color-secondary); /* Destaque laranja ao passar o mouse */
+}
