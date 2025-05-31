@@ -454,7 +454,6 @@ button.submit-btn:hover {
   }
 }
 
-/* FOOTER */
 footer {
   position: fixed;
   bottom: 0;
@@ -464,15 +463,18 @@ footer {
   color: var(--color-white);
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
   z-index: 1000;
+  padding: 10px 0; /* Espaço vertical para toque */
 }
 
 footer nav ul {
-  margin-right: 450px;
-  padding: 12px 0;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0;
+  max-width: 900px; /* Limite de largura para desktop */
   display: flex;
   justify-content: center;
   gap: 20px;
   list-style: none;
+  flex-wrap: wrap; /* Permite quebrar linha no mobile */
 }
 
 footer nav ul li a {
@@ -481,8 +483,22 @@ footer nav ul li a {
   font-weight: bold;
   padding: 6px 12px;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 footer nav ul li a:hover {
   color: var(--color-secondary);
+}
+
+/* Responsividade para mobile */
+@media (max-width: 600px) {
+  footer nav ul {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  footer nav ul li a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
 }
