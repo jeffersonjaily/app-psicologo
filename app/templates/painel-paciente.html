@@ -1,4 +1,4 @@
-<!-- painel-paciente.html -->
+<!-- templates/painel-paciente.html -->
 <!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
@@ -70,13 +70,15 @@
     <div class="top-bar">
       <h1>Painel do Paciente</h1>
       <div class="user-info">
-        <div>👤 Logado como: <span id="usuario-logado">paciente1</span></div>
-        <button class="btn-logout" onclick="logout()">Sair</button>
+        <div>👤 Logado como: <span>{{ usuario }}</span></div>
+        <form method="POST" action="{{ url_for('main.logout') }}">
+          <button type="submit" class="btn-logout">Sair</button>
+        </form>
       </div>
     </div>
 
     <div class="card p-4">
-      <h2>Bem-vindo, <span id="usuario-logado-2">paciente1</span>!</h2>
+      <h2>Bem-vindo, {{ usuario }}!</h2>
       <p>Seu acompanhamento terapêutico está em andamento.</p>
     </div>
 
@@ -106,17 +108,5 @@
       <button class="btn btn-primary" onclick="window.location.href='agenda.html'">Ver próximas Sessões</button>
     </div>
   </div>
-
-  <script>
-    function logout() {
-      // Aqui você pode fazer a limpeza do token, sessão etc.
-      // Por enquanto, só redireciona para a tela de login
-      window.location.href = "login.html";
-    }
-
-    // Sincronizar usuário exibido nas duas partes (caso mude dinamicamente)
-    const usuario = document.getElementById('usuario-logado').textContent;
-    document.getElementById('usuario-logado-2').textContent = usuario;
-  </script>
 </body>
 </html>
