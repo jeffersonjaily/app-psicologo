@@ -51,31 +51,74 @@
     #erro {
       margin-top: 1rem;
       font-weight: 600;
+      display: none;
+    }
+    /* Botão Home com estilo secundário */
+    a.btn.btn-secondary {
+      background-color: #6c757d;
+      border-color: #6c757d;
+      font-weight: 600;
+      padding: 0.6rem;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+    }
+    a.btn.btn-secondary:hover {
+      background-color: #5a6268;
+      border-color: #545b62;
+      color: white;
+      text-decoration: none;
+    }
+    .mt-3 {
+      margin-top: 1rem !important;
     }
   </style>
 </head>
 <body>
   <div class="login-box shadow-sm">
     <h2>Login do Paciente</h2>
-    <form method="POST" action="{{ url_for('main.login') }}">
+    <form onsubmit="return login()">
       <div class="mb-3 text-start">
         <label for="usuario" class="form-label">Usuário</label>
-        <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Digite seu usuário" required autocomplete="username" />
+        <input type="text" id="usuario" class="form-control" placeholder="Digite seu usuário" required autocomplete="username" />
       </div>
       <div class="mb-4 text-start">
         <label for="senha" class="form-label">Senha</label>
-        <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha" required autocomplete="current-password" />
+        <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" required autocomplete="current-password" />
       </div>
       <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <p id="erro" class="text-{{ 'danger' if category == 'danger' else category }}">{{ message }}</p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+<!-- Botão Home -->
+<div class="mt-3">
+  <a href="../../app-leandro/templates/index.html" class="btn btn-secondary w-100">Home</a>
+</div>
+
+    <p id="erro" class="text-danger">Usuário ou senha inválidos.</p>
   </div>
+
+  <script>
+    const usuarios = [
+      { usuario: "paciente1", senha: "1234", tipo: "paciente" },
+      { usuario: "psicologo2", senha: "1234", tipo: "psicologo" }
+    ];
+
+    function login() {
+      const usuario = document.getElementById("usuario").value.trim();
+      const senha = document.getElementById("senha").value;
+
+      const valido = usuarios.find(u => u.usuario === usuario && u.senha === senha);
+      if (valido) {
+        localStorage.setItem("usuario_logado", usuario);
+        window.location.href = "painel-paciente.html"; // redireciona para o painel
+      } else {
+        document.getElementById("erro").style.display = "block";
+      }
+
+      return false; // impede o envio do formulário
+    }
+  </script>
 </body>
 </html>
