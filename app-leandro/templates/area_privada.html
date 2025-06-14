@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Área Privada{% endblock %}
+{% block content %}
+<main class="login-container">
+  <h2>Bem-vindo {{ nome }} ({{ tipo }})</h2>
+  <form method="POST" action="{{ url_for('enviar_mensagem') }}">
+    <textarea name="mensagem" rows="4" placeholder="Digite uma mensagem..." required></textarea>
+    <button type="submit" class="submit-btn">Enviar</button>
+  </form>
+  <p><a href="{{ url_for('minhas_mensagens') }}">Ver mensagens</a> | <a href="{{ url_for('logout') }}">Sair</a></p>
+</main>
+{% endblock %}

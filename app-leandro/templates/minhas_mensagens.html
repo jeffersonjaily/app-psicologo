@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Minhas Mensagens{% endblock %}
+{% block content %}
+<main class="login-container">
+  <h2>Mensagens Enviadas</h2>
+  <ul>
+    {% for msg in mensagens %}
+      <li><strong>{{ msg.timestamp }}</strong>: {{ msg.texto }}</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ url_for('area_privada') }}">Voltar</a></p>
+</main>
+{% endblock %}

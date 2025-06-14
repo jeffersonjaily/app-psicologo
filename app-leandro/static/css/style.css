@@ -1,4 +1,244 @@
+/* static/css/style.css */
+
+/* === IMPORTAÇÃO DE FONTES === */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* === VARIÁVEIS === */
+:root {
+  --color-primary: #1e3a5f;
+  --color-secondary: #f97316;
+  --color-secondary-dark: #d65a0a;
+  --color-accent: #357ABD;
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+  --color-bg-light: #fff7ed;
+  --color-bg-highlight: #e0f2fe;
+  --color-text: #1f2937;
+  --color-white: #ffffff;
+}
+
+/* === RESET GERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === BASE === */
+body {
+  overflow: auto;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  padding-top: 70px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff4e6;
+  color: #1f2937;
+  padding: 20px;
+  padding-top: 70px; /* espaço para header fixo */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1e3a5f;
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav button {
+  background-color: #f97316;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+nav button:hover,
+nav button:focus {
+  background-color: #d65a0a;
+  outline: none;
+}
+
+.page-title {
+  background-color: #f97316;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: white;
+  user-select: none;
+  white-space: nowrap;
+}
+
+main.login-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto 0;
+}
+
+main.login-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #357ABD;
+  outline: none;
+}
+
+button.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4A90E2;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.submit-btn:hover,
+button.submit-btn:focus {
+  background-color: #357ABD;
+  outline: none;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff4e6;
+  margin: 0;
+  padding-top: 70px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1e3a5f;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.page-title {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+nav a {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.login-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+input, select, textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.flash {
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.flash.success { background-color: #d4edda; color: #155724; }
+.flash.danger { background-color: #f8d7da; color: #721c24; }
+.flash.info   { background-color: #d1ecf1; color: #0c5460; }
+
+
+.toggle {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.toggle a {
+  color: #4A90E2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: text-decoration 0.3s ease;
+}
+
+.toggle a:hover,
+.toggle a:focus {
+  text-decoration: underline;
+  outline: none;
+}
 
 :root {
   --color-primary: #1e3a5f;

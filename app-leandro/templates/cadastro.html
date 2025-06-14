@@ -1,89 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cadastro - App de Psicologia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../static/css/style.css" />
-</head>
-<body>
-
-  <header>
-    <div class="page-title" aria-label="Título da página">Cadastro</div>
-    <nav>
-      <button type="button" onclick="window.location.href='index.html'">Home</button>
-      <button type="button" onclick="window.location.href='sobre.html'">Sobre</button>
-      <button type="button" onclick="window.location.href='contato.html'">Contato</button>
-      <button type="button" onclick="window.location.href='login.html'">Login</button>
-    </nav>
-  </header>
-
-  <main class="login-container" id="register-form" role="main" aria-label="Formulário de cadastro">
-    <h1>Criar Conta</h1>
-    <input
-      type="text"
-      id="nome"
-      name="nome"
-      placeholder="Nome completo"
-      required
-      aria-label="Nome"
-    />
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Email"
-      required
-      aria-label="Email"
-      autocomplete="username"
-    />
-    <input
-      type="password"
-      id="senha"
-      name="senha"
-      placeholder="Senha"
-      required
-      aria-label="Senha"
-      autocomplete="new-password"
-    />
-    <input
-      type="password"
-      id="confirmarSenha"
-      name="confirmarSenha"
-      placeholder="Confirmar senha"
-      required
-      aria-label="Confirmar senha"
-      autocomplete="new-password"
-    />
-    <button type="button" class="submit-btn" onclick="cadastrar()">Cadastrar</button>
-
-    <div class="toggle">
-      Já tem uma conta? <a href="login.html">Entrar</a>
-    </div>
-  </main>
-
-  <script>
-    function cadastrar() {
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const senha = document.getElementById('senha').value;
-      const confirmar = document.getElementById('confirmarSenha').value;
-
-      if (!nome || !email || !senha || !confirmar) {
-        alert("Preencha todos os campos.");
-        return;
-      }
-
-      if (senha !== confirmar) {
-        alert("As senhas não coincidem.");
-        return;
-      }
-
-      alert(`Conta criada para ${nome} (${email})`);
-      window.location.href = "login.html";
-    }
-  </script>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Cadastro{% endblock %}
+{% block content %}
+<main class="login-container">
+  <h1>Criar Conta</h1>
+  <form method="POST" action="{{ url_for('cadastro') }}">
+    <input type="text" name="nome" placeholder="Nome completo" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="senha" placeholder="Senha" required />
+    <select name="tipo" required>
+      <option value="">Você é:</option>
+      <option value="paciente">Paciente</option>
+      <option value="psicologo">Psicólogo</option>
+    </select>
+    <button type="submit" class="submit-btn">Cadastrar</button>
+  </form>
+  <div class="toggle">
+    Já tem uma conta? <a href="{{ url_for('login') }}">Entrar</a>
+  </div>
+</main>
+{% endblock %}
