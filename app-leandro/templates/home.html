@@ -6,9 +6,90 @@
   <title>Página de Boas-Vindas</title>
   <link rel="stylesheet" href="../static/css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Estilo do botão flutuante para abrir o chat */
+    #chat-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 999;
+        user-select: none; /* Impede que o texto seja selecionado */
+    }
+
+    /* Estilo da janela do popup do chat */
+    #chat-popup {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 370px;
+        height: 500px;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        z-index: 1000;
+        display: none; /* Começa escondido */
+        flex-direction: column;
+        overflow: hidden;
+        transition: opacity 0.3s, transform 0.3s;
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    /* Classe para mostrar o popup com animação */
+    #chat-popup.visible {
+        display: flex;
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    /* Estilo do cabeçalho do chat */
+    .chat-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-header span {
+        font-weight: bold;
+    }
+
+    .chat-header button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    /* Estilo do iframe que vai conter o chat.html */
+    #chat-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        flex-grow: 1;
+    }
+  </style>
 </head>
 <body>
-  <!-- Cabeçalho com navegação modernizado -->
   <header class="header">
     <div class="container-header">
       <nav class="nav-buttons">
@@ -21,10 +102,8 @@
     </div>
   </header>
 
-  <!-- Conteúdo principal -->
   <main>
     <section class="hero">
-      <!-- Texto e vídeo -->
       <div class="hero-left">
         <p style="font-style: italic;">
           "Entender para transformar. Seu bem-estar começa aqui. Psicologia para uma vida mais leve, promovendo equilíbrio e autoconhecimento em 
@@ -41,7 +120,6 @@
         </div>
       </div>
 
-      <!-- Carrossel de imagens -->
       <div class="carousel-container">
         <div class="carousel-track">
           <img src="../static/imagens/Tranquilidade e bem-1.png" alt="Imagem 1" />
@@ -53,7 +131,6 @@
       </div>
     </section>
 
-    <!-- Flyer horizontal -->
     <section class="flyer">
       <img src="../static/imagens/vertical.png" alt="Flyer 1" />
       <img src="../static/imagens/horizontal.png" alt="Flyer 2" />
@@ -63,63 +140,16 @@
     </section>
   </main>
 
- <!-- Botão para abrir o chat -->
-<div id="chat-toggle">Chat</div>
+  <div id="chat-toggle">💬</div>
 
-<!-- Janela do Chat -->
-<div id="chat-popup" class="chat-popup minimized">
-  <div class="chat-header">
-    Chat Terapêutico
-    <button id="toggle-chat-btn" aria-label="Minimizar/Expandir chat">−</button>
-  </div>
-  <div class="chat-box" id="chat-box"></div>
-  <div class="chat-input">
-    <input type="text" id="user-input" placeholder="Digite aqui..." />
-    <button onclick="enviarPergunta()">Enviar</button>
-  </div>
-</div>
-
-
-  <!-- Janela do Chat -->
-  <div id="chat-popup" class="chat-popup minimized" style="
-    position: fixed; 
-    bottom: 80px; 
-    right: 20px; 
-    width: 350px; 
-    height: 450px; 
-    background-color: white; 
-    border: 1px solid #ccc; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
-    border-radius: 10px; 
-    z-index: 1000; 
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-  ">
-    <div class="chat-header" style="
-      background-color: #007bff; 
-      color: white; 
-      padding: 10px; 
-      border-top-left-radius: 10px; 
-      border-top-right-radius: 10px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-    ">
-      <span>Chat Terapêutico</span>
-      <button id="toggle-chat-btn" aria-label="Minimizar/Expandir chat" style="
-        background: none; 
-        border: none; 
-        color: white; 
-        font-size: 1.5rem; 
-        cursor: pointer;
-        user-select: none;
-      ">−</button>
-    </div>
-    <iframe src="http://localhost:5001" style="width: 100%; height: 400px; border: none; flex-grow: 1;"></iframe>
+  <div id="chat-popup">
+      <div class="chat-header">
+          <span>Chat com IA</span>
+          <button id="close-chat-btn">−</button>
+      </div>
+      <iframe id="chat-iframe" src="chat.html"></iframe>
   </div>
 
-  <!-- Rodapé fixo -->
   <footer>
     <nav> 
       <ul>
@@ -132,8 +162,21 @@
     </nav>
   </footer>
 
-  <!-- Scripts -->
   <script src="../static/js/chat-popup.js" defer></script>
   <script src="../static/js/carousel.js" defer></script>
+
+  <script>
+    // Lógica para abrir e fechar o popup
+    const chatToggleButton = document.getElementById('chat-toggle');
+    const closeChatButton = document.getElementById('close-chat-btn');
+    const chatPopup = document.getElementById('chat-popup');
+
+    function toggleChat() {
+        chatPopup.classList.toggle('visible');
+    }
+
+    chatToggleButton.addEventListener('click', toggleChat);
+    closeChatButton.addEventListener('click', toggleChat);
+  </script>
 </body>
 </html>
